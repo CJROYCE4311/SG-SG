@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sterling Grove – Player Scorecard Averages</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="SG-SG Map.png" alt="SG-SG Map" class="h-12 w-12 mr-4">
+                <h1 class="text-2xl font-bold text-gray-800">SG@SG</h1>
+                <img src="Sterling Grove Flag.png" alt="Sterling Grove Flag" class="h-12 w-12 ml-4">
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="Index.html#home" class="text-gray-600 hover:text-green-700 transition duration-300">Home</a>
+                <a href="Index.html#events" class="text-gray-600 hover:text-green-700 transition duration-300">Events</a>
+                <a href="Index.html#leaderboard" class="text-gray-600 hover:text-green-700 transition duration-300">Leaderboard</a>
+                <a href="Index.html#contact" class="text-gray-600 hover:text-green-700 transition duration-300">Contact</a>
+            </nav>
+            <button class="md:hidden flex items-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="bg-white p-4 md:p-8 rounded-lg shadow-lg">
+            <header class="mb-6 text-center border-b pb-4">
+                <h1 class="text-3xl font-bold">Player Scorecard Averages</h1>
+                <p class="text-md text-gray-600 mt-2">View average scores per hole for each player.</p>
+            </header>
+
+            <section class="p-4 md:p-6 mb-6">
+                <div class="flex flex-col md:flex-row gap-4 md:items-end justify-between">
+                    <div class="grow md:grow-0">
+                        <label for="playerSelect" class="block text-sm font-medium text-gray-700 mb-1">Select Player</label>
+                        <select id="playerSelect" class="w-full md:w-80 border rounded-lg p-2 bg-gray-50">
+                        </select>
+                    </div>
+                    <div class="grow md:grow-0">
+                        <label for="compareSelect" class="block text-sm font-medium text-gray-700 mb-1">Compare With</label>
+                        <select id="compareSelect" class="w-full md:w-80 border rounded-lg p-2 bg-gray-50">
+                            <option value="">None</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                            <div class="border rounded-lg px-3 py-2 text-center">
+                                <div class="text-xs text-gray-500">Par</div>
+                                <div id="parTotal" class="text-lg font-semibold">–</div>
+                            </div>
+                            <div class="border rounded-lg px-3 py-2 text-center">
+                                <div class="text-xs text-gray-500">Yardage</div>
+                                <div id="yardageTotal" class="text-lg font-semibold">–</div>
+                            </div>
+                            <div class="border rounded-lg px-3 py-2 text-center">
+                                <div class="text-xs text-gray-500">Player Avg</div>
+                                <div id="avgTotal" class="text-lg font-semibold">–</div>
+                            </div>
+                            <div class="border rounded-lg px-3 py-2 text-center">
+                                <div class="text-xs text-gray-500">Player Diff</div>
+                                <div id="playerDifferential" class="text-lg font-semibold">–</div>
+                            </div>
+                            <div class="border rounded-lg px-3 py-2 text-center">
+                                <div class="text-xs text-gray-500">Compare Avg</div>
+                                <div id="compareAvgTotal" class="text-lg font-semibold">–</div>
+                            </div>
+                            <div class="border rounded-lg px-3 py-2 text-center">
+                                <div class="text-xs text-gray-500">Compare Diff</div>
+                                <div id="compareDifferential" class="text-lg font-semibold">–</div>
+                            </div>
+                            <div class="border rounded-lg px-3 py-2 text-center">
+                                <div class="text-xs text-gray-500">Avg Δ</div>
+                                <div id="avgDeltaTotal" class="text-lg font-semibold">–</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="overflow-x-auto">
+                <table class="min-w-full text-center text-sm">
+                    <thead id="scorecard-head">
+                        <!-- Header is dynamically generated by JavaScript -->
+                    </thead>
+                    <tbody id="scorecard-body">
+                        <!-- Body is dynamically generated by JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Sterling Grove Golf and Country Club</h3>
+                    <p class="text-gray-400">11440 North Greenwich Boulevard<br>Surprise, AZ 85388</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="Index.html#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="Index.html#events" class="text-gray-400 hover:text-white">Events</a></li>
+                        <li class="mb-2"><a href="Index.html#leaderboard" class="text-gray-400 hover:text-white">Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Paul Benga: <a href="https://wa.me/14806202088" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                    <p class="text-gray-400">Patrick Schueppert: <a href="https://wa.me/17024996923" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                    <p class="text-gray-400">Chris Royce: <a href="https://wa.me/17195104311" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 SG@SG. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+    // --- RAW CSV DATA ---
+    // For future updates, paste the raw CSV content inside the backticks.
+    const scorecardCSV = `,Hole 1,Hole 2,Hole 3,Hole 4,Hole 5,Hole 6,Hole 7,Hole 8,Hole 9,Hole 10,Hole 11,Hole 12,Hole 13,Hole 14,Hole 15,Hole 16,Hole 17,Hole 18,Total
+S.I.,5,15,13,7,1,17,9,3,11,12,14,2,16,10,6,18,8,4,
+Par,4,4,3,5,4,4,3,4,5,4,5,4,3,4,4,4,3,5,72
+Blue,391,321,155,554,434,287,189,424,516,348,505,447,135,351,383,298,214,533,6485`;
+
+    const averagesCSV = `Player Name,Hole 1,Hole 2,Hole 3,Hole 4,Hole 5,Hole 6,Hole 7,Hole 8,Hole 9,Hole 10,Hole 11,Hole 12,Hole 13,Hole 14,Hole 15,Hole 16,Hole 17,Hole 18,Total
+Andy Meach,5.33,5.00,3.17,5.50,4.83,4.33,3.17,4.67,5.17,4.33,5.00,4.83,3.83,4.67,4.50,4.00,3.67,5.00,81.00
+Ben Magnone,4.67,4.00,4.00,5.56,5.00,4.00,3.78,4.78,5.89,4.56,5.56,5.56,3.67,5.22,4.89,4.78,3.56,5.67,85.11
+Brian Howell,5.00,4.00,4.00,6.00,5.00,2.00,3.00,6.00,5.00,5.00,5.00,5.00,4.00,4.00,4.00,5.00,4.00,6.00,82.00
+Buddy Goldstone,4.75,4.50,4.50,6.25,5.00,5.25,3.75,5.75,5.75,4.00,5.25,5.75,4.50,4.25,5.50,4.50,4.00,8.00,91.25
+Chris Beck,4.67,4.78,3.89,6.56,5.11,5.11,3.67,5.44,6.33,4.78,6.00,5.00,3.78,5.00,4.56,4.44,4.00,6.33,89.33
+Chris Husong,4.86,4.57,3.86,5.71,5.29,4.57,4.00,4.86,5.57,4.71,5.71,4.71,3.71,4.57,4.71,4.71,4.14,5.29,84.86
+Chris Ryan,5.60,4.60,3.80,7.40,5.60,6.00,4.20,5.40,6.00,4.20,5.40,5.40,4.00,5.00,5.20,4.80,3.80,6.80,93.40
+Christopher Royce,5.18,5.09,4.55,6.73,5.82,5.18,4.09,5.64,6.45,5.00,5.64,5.73,3.73,4.82,4.91,4.64,4.36,5.82,93.36
+Clark Koch,4.63,4.38,3.50,5.63,4.50,4.38,4.25,4.75,5.38,4.25,5.88,5.00,3.63,3.88,4.75,4.75,3.75,5.50,82.63
+Conrad Copeland,5.00,4.00,3.00,6.00,5.00,4.00,4.00,5.00,7.00,6.00,6.00,5.00,3.00,5.00,5.00,6.00,5.00,7.00,91.00
+Dan Denham,4.00,4.00,4.00,4.00,4.00,3.00,4.00,4.00,6.00,4.00,5.00,5.00,2.00,4.00,4.00,4.00,3.00,8.00,76.00
+Darrin Harn,5.00,4.00,3.00,5.00,5.00,4.00,3.00,5.00,5.00,5.00,5.00,3.00,4.00,6.00,4.00,3.00,3.00,5.00,77.00
+David Edwards,5.50,4.50,4.00,5.50,5.00,4.50,3.50,5.00,5.50,4.00,4.00,5.00,3.50,5.00,4.00,3.50,4.00,5.50,81.50
+Dean Fisk,5.00,4.67,3.33,5.33,5.67,4.33,4.67,4.67,6.00,5.33,4.67,5.67,3.33,5.00,4.33,3.67,3.67,5.67,85.00
+Derek Beck,4.00,4.00,4.00,7.00,6.00,5.00,4.00,6.00,5.00,4.00,4.00,4.00,3.00,5.00,4.00,4.00,4.00,5.00,82.00
+Derek Becko,4.14,4.14,3.71,5.29,5.00,4.71,3.57,4.57,5.29,4.14,4.86,4.29,3.29,4.29,4.00,4.00,4.00,5.86,79.00
+Dusty Wasmund,3.00,4.00,3.00,4.00,5.00,4.00,4.00,4.00,5.00,5.00,6.00,5.00,3.00,4.00,5.00,3.00,5.00,4.00,76.00
+Eric Lamb,5.50,4.50,4.00,6.00,5.00,5.00,4.00,6.00,7.50,6.50,8.50,5.50,4.00,5.00,6.00,4.00,5.50,9.00,101.50
+Eric Weiss,4.00,3.75,2.88,5.13,4.13,3.88,2.88,4.00,4.88,4.00,4.88,3.88,2.88,4.00,4.00,4.13,3.13,5.13,71.63
+Frank Angeloro,4.75,4.00,3.75,5.25,4.88,4.13,3.50,5.00,5.50,4.38,5.13,5.00,3.88,4.38,5.00,3.88,4.13,5.13,81.75
+Greg Funk,4.36,4.18,3.45,5.18,4.55,3.73,3.18,4.91,5.18,4.45,5.00,4.64,3.64,4.64,4.45,4.27,3.36,5.18,77.82
+Hans Anderson,4.25,3.25,3.25,5.50,3.75,4.50,3.75,4.50,4.00,3.50,4.75,4.25,3.50,3.75,4.00,4.25,3.25,5.00,73.00
+James Feutz,4.50,4.00,3.50,4.50,4.50,3.00,2.50,4.50,4.00,4.00,4.50,4.00,3.00,4.00,4.00,4.00,4.00,5.50,72.00
+Jamey Davis,6.00,4.00,3.00,5.00,5.00,4.00,3.00,5.00,6.00,8.00,6.00,5.00,3.00,6.00,5.00,5.00,4.00,6.00,89.00
+Jared Strathe,4.00,3.00,3.00,5.00,4.50,2.50,3.00,4.50,4.50,4.00,5.00,3.50,3.00,4.00,4.50,4.00,3.00,4.50,69.50
+Jeff Avery,5.00,4.50,3.50,4.50,5.00,4.50,3.50,7.00,4.50,5.00,6.00,5.50,4.00,4.50,4.00,3.50,5.00,6.50,86.00
+Jeff Cloepfil,5.00,4.25,3.00,6.00,5.00,4.00,3.75,4.50,5.50,4.50,5.75,4.75,4.25,4.00,5.00,4.25,4.00,6.25,83.75
+Jeff De Laveaga,4.00,3.00,3.00,5.00,5.00,2.00,3.00,4.00,5.00,3.00,5.00,4.00,3.00,4.00,5.00,4.00,3.00,4.00,69.00
+Jim Brown,4.00,5.00,3.00,5.00,5.00,5.00,3.00,4.00,5.00,6.00,6.00,4.00,3.00,4.00,4.00,4.00,3.00,5.00,78.00
+Jim Restivo,5.00,4.60,3.60,5.20,5.20,4.80,4.60,6.00,5.40,4.80,5.80,5.80,3.60,4.20,4.80,5.40,3.60,5.60,88.00
+Joe Sepessy,4.67,4.00,4.00,4.00,4.00,4.00,2.67,4.67,5.00,3.67,4.67,4.33,4.00,3.33,4.67,4.00,3.33,5.00,74.67
+Jon Vrolyks,4.60,4.40,3.60,5.20,5.00,4.20,3.80,4.80,5.60,4.00,5.40,4.80,3.80,4.60,4.40,4.00,3.00,5.20,80.40
+Justin Deuker,4.17,4.00,3.83,5.67,3.83,4.67,3.83,5.00,4.50,4.50,4.83,4.33,4.00,4.17,4.17,3.67,3.83,5.50,78.50
+Kevin Barber,5.17,5.00,3.83,6.50,5.00,4.83,4.00,5.33,5.83,5.00,6.00,5.00,3.17,4.83,4.33,4.33,4.00,6.50,88.67
+Kevin Mueller,7.00,5.00,4.00,6.00,6.00,3.00,3.00,6.00,5.00,6.00,5.00,4.00,6.00,4.00,4.00,5.00,4.00,6.00,89.00
+Kiernan Mattson,4.67,4.17,3.00,5.33,4.83,4.50,3.17,4.33,5.17,4.17,4.83,4.33,3.33,4.50,4.17,4.17,3.33,5.50,77.67
+Korey Jerome,5.00,4.00,3.33,6.00,6.00,4.17,3.50,4.83,6.17,4.33,6.00,4.50,3.00,4.17,4.33,4.17,4.17,5.17,82.83
+Larry Caplan,6.00,6.00,3.67,7.00,4.00,4.67,3.33,5.33,6.67,6.00,6.00,6.33,3.33,5.00,6.33,4.67,4.33,6.00,94.67
+Leonard Brown,5.00,4.00,5.00,6.00,5.00,5.00,4.00,6.00,7.00,5.00,6.00,5.00,6.00,5.00,5.00,6.00,5.00,6.00,96.00
+Mark Albedyll,5.33,5.33,3.67,6.33,5.00,4.00,3.33,5.33,6.00,5.33,7.00,5.33,3.33,5.00,5.67,5.00,3.67,6.33,91.00
+Mark Albeydyll,5.00,4.00,4.00,6.00,6.00,3.00,4.00,7.00,8.00,6.00,6.00,5.00,2.00,4.00,5.00,5.00,4.00,7.00,91.00
+Mark James,5.50,4.50,4.50,6.50,5.00,4.50,3.00,6.00,5.50,4.50,6.00,5.50,3.50,5.00,5.00,4.50,3.50,6.00,88.50
+Mark Lewis,5.17,4.83,4.17,5.83,5.50,4.17,4.00,5.33,5.17,5.17,5.50,4.50,3.67,4.17,5.17,4.50,4.33,5.67,86.83
+Matt Neimeier,5.00,4.75,3.88,5.88,4.75,5.25,3.63,5.50,6.25,4.88,5.38,5.75,3.63,4.75,4.00,4.25,3.75,5.75,87.25
+Michael Falagrady,6.00,4.50,3.00,5.00,4.50,6.00,4.00,4.50,5.00,4.50,4.00,5.00,3.00,3.50,3.50,4.50,3.50,6.00,80.00
+Mike Muller,4.75,4.63,4.00,5.75,5.25,4.75,3.88,4.38,5.63,4.38,5.25,5.00,3.25,4.00,4.38,4.13,3.50,5.50,82.38
+Neil Harris,3.70,4.00,2.90,4.60,4.20,3.70,3.50,4.10,4.60,4.10,4.90,4.10,3.10,3.70,3.80,3.30,3.90,5.10,71.40
+Patrick Schueppert,5.11,5.00,3.89,6.11,5.44,4.33,4.67,5.56,6.56,5.22,6.22,5.44,3.67,5.00,5.22,5.00,4.33,5.78,92.56
+Paul Benga,5.27,3.82,3.73,5.09,4.64,4.45,3.73,4.73,5.00,3.82,5.36,4.82,3.27,3.82,4.27,4.55,3.91,5.36,79.64
+Rich Fagan,5.67,5.00,3.83,6.00,5.67,4.50,4.17,5.17,5.33,4.83,5.67,6.33,4.50,4.83,5.00,4.00,4.00,6.83,91.33
+Rich McKeon,5.00,4.00,3.00,6.00,5.00,5.00,3.00,6.00,6.00,4.00,5.00,6.00,3.00,5.00,5.00,5.00,4.00,8.00,88.00
+Richard Lederman,4.71,4.57,4.00,5.57,5.29,4.71,4.14,5.57,5.71,4.71,5.86,5.00,3.43,4.86,4.57,4.57,3.71,6.29,87.29
+Rick Deloney,4.86,4.14,3.43,6.14,5.29,4.43,3.43,4.86,5.43,4.57,5.43,4.86,3.43,4.71,4.71,4.57,3.71,5.86,83.86
+Rick Meewes,4.00,4.00,4.00,5.00,5.00,4.00,3.00,6.00,7.00,5.00,6.00,3.00,4.00,4.00,4.00,4.00,4.00,7.00,83.00
+Rob Oliver,5.20,5.20,4.20,6.60,5.00,4.60,4.40,6.40,5.00,4.80,6.00,6.00,3.40,5.00,5.40,5.00,3.60,5.60,91.40
+Robert Hill,6.00,5.38,3.75,6.50,6.13,5.00,4.38,5.88,6.00,5.13,6.50,5.38,4.00,5.13,5.63,4.63,4.50,7.50,97.38
+Ron Amstutz,5.00,4.00,3.60,5.20,4.80,4.40,3.80,5.00,6.00,4.60,5.60,4.60,4.40,4.80,4.20,4.60,3.80,5.80,84.20
+Ron Marino,5.00,4.80,3.60,5.60,4.60,4.00,3.20,5.60,5.60,4.60,4.80,5.00,3.60,4.40,4.20,4.00,3.80,5.80,82.20
+Scott Benton,5.83,4.83,3.83,5.50,5.00,4.67,3.67,5.67,5.83,4.83,6.17,5.17,3.83,4.33,4.67,4.00,4.00,5.83,87.67
+Scott Bracken,4.75,4.50,3.38,5.25,4.88,4.50,3.63,5.00,5.38,4.25,5.13,5.13,3.75,4.50,4.50,4.38,4.00,6.00,82.63
+Scott Lucas,5.00,4.40,3.80,7.00,5.60,5.00,3.80,4.80,5.60,5.20,5.20,4.80,4.20,5.20,5.20,3.80,3.80,5.20,87.40
+Shane Bolosan,4.50,4.70,3.70,5.80,4.70,3.90,3.30,5.30,6.40,4.20,5.60,5.00,3.90,5.00,5.00,3.90,3.80,6.20,84.90
+Shawn Warner,4.00,5.50,3.50,6.00,5.50,5.50,4.00,4.50,5.00,5.50,5.00,5.50,3.50,5.00,4.50,4.50,4.00,6.50,87.50
+Stephen Cherepy,4.00,5.00,4.00,6.00,4.00,4.00,4.00,6.00,6.00,5.00,5.00,6.00,3.00,5.00,4.00,4.00,6.00,6.00,87.00
+Steve McCormick,4.86,4.86,3.71,5.71,5.00,4.57,3.43,5.43,5.29,5.29,5.57,5.14,3.86,4.43,4.57,4.71,3.71,5.71,85.86
+Steve Rosenbluth,5.25,4.75,3.50,5.75,5.00,4.25,3.75,5.50,5.50,4.75,5.25,5.00,4.50,4.75,4.50,5.00,3.25,5.50,85.75
+Thomas Earl,4.67,4.33,3.33,5.67,5.33,3.67,3.00,4.67,5.67,5.00,5.67,5.33,4.00,5.33,3.67,4.67,3.33,6.00,83.33
+Todd Densley,3.60,3.60,2.80,5.20,4.20,4.20,3.60,3.80,4.40,4.00,4.40,4.40,3.00,4.20,4.00,4.20,3.20,5.00,71.80
+Tracy Copenhaver,4.75,4.75,4.00,6.00,6.00,4.25,4.25,5.50,6.50,4.75,5.75,4.75,4.25,5.00,5.00,4.00,3.75,6.25,89.50
+Travis Ingram,4.88,4.13,3.50,5.88,4.75,4.38,3.25,4.75,5.00,4.63,5.00,5.25,3.75,4.38,4.38,3.75,4.00,6.00,81.63
+Travis Jorgensen,4.00,6.00,4.00,5.00,5.00,4.00,3.00,5.00,7.00,5.00,5.00,5.00,3.00,5.00,5.00,4.00,4.00,5.00,84.00
+Trent Dana,5.17,4.50,4.00,6.50,5.50,5.00,4.33,5.33,6.00,5.00,5.33,5.67,4.33,5.00,5.33,4.67,4.00,6.17,91.83
+Zach Coe,4.40,3.80,3.40,5.00,4.80,4.00,3.40,4.40,4.40,4.20,4.80,4.40,3.40,4.00,3.60,3.20,3.20,6.20,73.80
+Zach Fleishman,5.20,5.20,3.40,5.80,5.40,5.40,4.20,4.80,5.00,5.00,5.80,5.40,3.80,5.00,4.60,4.60,3.80,5.40,87.80
+Zach Mattson,5.00,4.50,4.50,6.00,4.50,5.00,4.00,5.50,5.50,4.50,5.50,4.00,3.00,4.50,4.50,4.00,3.50,6.00,84.00
+Zane Eisenbarth,5.17,3.83,3.50,5.33,5.00,5.00,3.67,5.00,5.33,4.17,4.50,5.17,3.67,4.67,4.67,4.50,3.33,5.50,82.00`;
+
+    // --- SCRIPT LOGIC ---
+
+    // Function to parse raw CSV text into a structured array of objects
+    function parseCSV(csvText) {
+        const lines = csvText.trim().split('\n').filter(Boolean);
+        const headers = lines.shift().split(',').map(h => h.trim());
+        return lines.map(line => {
+            let values = line.split(',');
+            if (values.length !== headers.length && line.includes('\t')) {
+                values = line.split('\t');
+            }
+
+            const obj = {};
+            headers.forEach((header, i) => {
+                obj[header] = values[i] ? values[i].trim() : '';
+            });
+            return obj;
+        });
+    }
+
+    // Function to process parsed CSV data into the final 'embedded' object structure
+    function processData(scorecardData, averagesData) {
+        const embedded = {
+            scorecard: {
+                holes: [],
+                si: [],
+                par: [],
+                yardage_blue: [],
+                par_total: 0,
+                yardage_total: 0
+            },
+            players: [],
+            averages: {}
+        };
+
+        // Process scorecard data
+        const siRow = scorecardData.find(row => row[''] === 'S.I.');
+        const parRow = scorecardData.find(row => row[''] === 'Par');
+        const blueRow = scorecardData.find(row => row[''] === 'Blue');
+
+        for (let i = 1; i <= 18; i++) {
+            const holeKey = `Hole ${i}`;
+            embedded.scorecard.holes.push(i);
+            const siVal = parseInt(siRow[holeKey], 10);
+            const parVal = parseInt(parRow[holeKey], 10);
+            const yardageVal = parseInt(blueRow[holeKey], 10);
+
+            embedded.scorecard.si.push(Number.isFinite(siVal) ? siVal : null);
+            embedded.scorecard.par.push(Number.isFinite(parVal) ? parVal : null);
+            embedded.scorecard.yardage_blue.push(Number.isFinite(yardageVal) ? yardageVal : null);
+        }
+        const parTotalVal = parseInt(parRow.Total, 10);
+        const yardageTotalVal = parseInt(blueRow.Total, 10);
+        embedded.scorecard.par_total = Number.isFinite(parTotalVal) ? parTotalVal : null;
+        embedded.scorecard.yardage_total = Number.isFinite(yardageTotalVal) ? yardageTotalVal : null;
+
+        // Process player averages
+        averagesData.forEach(playerRow => {
+            const playerName = playerRow['Player Name'];
+            if (playerName) {
+                embedded.players.push(playerName);
+                const per_hole = [];
+                for (let i = 1; i <= 18; i++) {
+                    const holeScore = parseFloat(playerRow[`Hole ${i}`]);
+                    per_hole.push(Number.isFinite(holeScore) ? holeScore : null);
+                }
+                const totalScore = parseFloat(playerRow.Total);
+                embedded.averages[playerName] = {
+                    per_hole: per_hole,
+                    total: Number.isFinite(totalScore) ? totalScore : null
+                };
+            }
+        });
+        
+        return embedded;
+    }
+
+    // --- INITIALIZATION ---
+    const parsedScorecard = parseCSV(scorecardCSV);
+    const parsedAverages = parseCSV(averagesCSV);
+    const embedded = processData(parsedScorecard, parsedAverages);
+    
+    const { players, averages, scorecard } = embedded;
+    const { si, par, yardage_blue, par_total, yardage_total } = scorecard;
+
+    const playerSelect = document.getElementById('playerSelect');
+    const compareSelect = document.getElementById('compareSelect');
+    const parTotalEl = document.getElementById('parTotal');
+    const yardageTotalEl = document.getElementById('yardageTotal');
+    const avgTotalEl = document.getElementById('avgTotal');
+    const playerDiffEl = document.getElementById('playerDifferential');
+    const compareAvgTotalEl = document.getElementById('compareAvgTotal');
+    const compareDiffEl = document.getElementById('compareDifferential');
+    const avgDeltaTotalEl = document.getElementById('avgDeltaTotal');
+
+    parTotalEl.textContent = Number.isFinite(par_total) ? par_total : '–';
+    yardageTotalEl.textContent = Number.isFinite(yardage_total) ? yardage_total.toLocaleString() : '–';
+
+    players.sort();
+    playerSelect.innerHTML = '';
+    compareSelect.innerHTML = '<option value="">None</option>';
+
+    players.forEach(name => {
+        const opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        playerSelect.appendChild(opt);
+
+        const compareOpt = document.createElement('option');
+        compareOpt.value = name;
+        compareOpt.textContent = name;
+        compareSelect.appendChild(compareOpt);
+    });
+
+    function renderScorecard(selectedPlayer, comparePlayer = null) {
+        const scorecardHead = document.getElementById('scorecard-head');
+        const scorecardBody = document.getElementById('scorecard-body');
+        scorecardHead.innerHTML = '';
+        scorecardBody.innerHTML = '';
+
+        const headerRow = document.createElement('tr');
+        headerRow.className = 'bg-gray-800 text-white';
+        let headerHTML = '<th class="py-2 px-2 font-semibold text-sm text-left sticky left-0 bg-gray-800 z-10">Stat</th>';
+        for (let i = 1; i <= 9; i++) headerHTML += `<th class="py-2 px-2 font-semibold text-sm">${i}</th>`;
+        headerHTML += '<th class="py-2 px-2 font-semibold text-sm bg-gray-900">Out</th>';
+        for (let i = 10; i <= 18; i++) headerHTML += `<th class="py-2 px-2 font-semibold text-sm">${i}</th>`;
+        headerHTML += '<th class="py-2 px-2 font-semibold text-sm bg-gray-900">In</th>';
+        headerHTML += '<th class="py-2 px-2 font-semibold text-sm bg-gray-900">Total</th>';
+        headerRow.innerHTML = headerHTML;
+        scorecardHead.appendChild(headerRow);
+
+        if (!selectedPlayer || !averages[selectedPlayer]) {
+            avgTotalEl.textContent = '–';
+            playerDiffEl.textContent = '–';
+            compareAvgTotalEl.textContent = '–';
+            compareDiffEl.textContent = '–';
+            avgDeltaTotalEl.textContent = '–';
+            return;
+        }
+
+        const compareName = comparePlayer && comparePlayer !== selectedPlayer ? comparePlayer : null;
+        const avgScoresPrimary = averages[selectedPlayer]?.per_hole ?? Array(18).fill(null);
+        const compareScores = compareName ? (averages[compareName]?.per_hole ?? Array(18).fill(null)) : null;
+        const primaryTotal = averages[selectedPlayer]?.total ?? null;
+        const compareTotal = compareName ? (averages[compareName]?.total ?? null) : null;
+
+        const sumOrZero = (arr) => arr.filter(Number.isFinite).reduce((total, value) => total + value, 0);
+        const sumOrNull = (arr) => {
+            const numeric = arr.filter(Number.isFinite);
+            return numeric.length > 0 ? numeric.reduce((total, value) => total + value, 0) : null;
+        };
+        const toFixedSafe = (value, digits = 1) => {
+            const fixed = value.toFixed(digits);
+            return fixed === '-0.0' ? '0.0' : fixed;
+        };
+        const formatLocale = (value) => Number.isFinite(value) ? value.toLocaleString() : '–';
+        const formatFixed = (value, digits = 1) => Number.isFinite(value) ? toFixedSafe(value, digits) : '–';
+        const formatSigned = (value, digits = 1) => {
+            if (!Number.isFinite(value)) return '–';
+            const fixed = toFixedSafe(value, digits);
+            return value > 0 ? `+${fixed}` : fixed;
+        };
+        const computeDifferential = (value) => Number.isFinite(value) ? (value - 70.5) * 0.8968 : null;
+
+        const parOut = sumOrZero(par.slice(0, 9));
+        const parIn = sumOrZero(par.slice(9, 18));
+        const yardageOut = sumOrZero(yardage_blue.slice(0, 9));
+        const yardageIn = sumOrZero(yardage_blue.slice(9, 18));
+
+        const buildAverageRow = (label, scores, declaredTotal) => {
+            const outSum = sumOrNull(scores.slice(0, 9));
+            const inSum = sumOrNull(scores.slice(9, 18));
+            const totalSum = Number.isFinite(declaredTotal)
+                ? declaredTotal
+                : (Number.isFinite(outSum) && Number.isFinite(inSum) ? outSum + inSum : null);
+
+            return {
+                label,
+                data: scores,
+                out: formatFixed(outSum),
+                in: formatFixed(inSum),
+                total: formatFixed(totalSum),
+                type: 'avg'
+            };
+        };
+
+        const rowsData = [
+            { label: 'H.I.', data: si, out: '–', in: '–', total: '–', type: 'static' },
+            { label: 'Par', data: par, out: formatLocale(parOut), in: formatLocale(parIn), total: formatLocale(par_total), type: 'static' },
+            { label: 'Yardage', data: yardage_blue, out: formatLocale(yardageOut), in: formatLocale(yardageIn), total: formatLocale(yardage_total), type: 'static' },
+            buildAverageRow(`${selectedPlayer} Avg`, avgScoresPrimary, primaryTotal)
+        ];
+
+        let deltaTotalValue = null;
+
+        if (compareName) {
+            rowsData.push(buildAverageRow(`${compareName} Avg`, compareScores, compareTotal));
+
+            const deltaScores = avgScoresPrimary.map((val, idx) => {
+                const compareVal = compareScores[idx];
+                return Number.isFinite(val) && Number.isFinite(compareVal) ? val - compareVal : null;
+            });
+
+            const deltaOut = sumOrNull(deltaScores.slice(0, 9));
+            const deltaIn = sumOrNull(deltaScores.slice(9, 18));
+            deltaTotalValue = Number.isFinite(primaryTotal) && Number.isFinite(compareTotal)
+                ? primaryTotal - compareTotal
+                : sumOrNull(deltaScores);
+
+            rowsData.push({
+                label: `Avg Δ (${selectedPlayer} - ${compareName})`,
+                data: deltaScores,
+                out: formatSigned(deltaOut),
+                in: formatSigned(deltaIn),
+                total: formatSigned(deltaTotalValue),
+                type: 'delta'
+            });
+        }
+
+        rowsData.forEach((rowData, index) => {
+            const tr = document.createElement('tr');
+            const baseBg = index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+            tr.className = baseBg;
+            let rowHTML = `<td class="py-2 px-2 font-semibold text-left text-sm sticky left-0 ${baseBg} z-10">${rowData.label}</td>`;
+
+            rowData.data.forEach((val, idx) => {
+                const isAvgScoreRow = rowData.type === 'avg';
+                const isDeltaRow = rowData.type === 'delta';
+                const isNumeric = Number.isFinite(val);
+                let displayVal = '–';
+                if (isNumeric) {
+                    if (isAvgScoreRow) displayVal = toFixedSafe(val);
+                    else if (isDeltaRow) displayVal = formatSigned(val);
+                    else displayVal = val.toLocaleString();
+                }
+
+                let cellHTML;
+                if (isAvgScoreRow && isNumeric) {
+                    const parVal = par[idx];
+                    let bgColor = '';
+                    const scoreDiff = Number.isFinite(parVal) ? val - parVal : 0;
+
+                    if (scoreDiff <= -1.5) bgColor = 'bg-blue-200';
+                    else if (scoreDiff < -0.5) bgColor = 'bg-green-200';
+                    else if (scoreDiff > 0.5 && scoreDiff < 1.5) bgColor = 'bg-yellow-200';
+                    else if (scoreDiff >= 1.5) bgColor = 'bg-red-200';
+                    cellHTML = `<td class="py-2 px-2 ${bgColor}">${displayVal}</td>`;
+                } else if (isDeltaRow && isNumeric) {
+                    let bgColor = '';
+                    if (val < -0.3) bgColor = 'bg-green-200';
+                    else if (val > 0.3) bgColor = 'bg-red-200';
+                    else bgColor = 'bg-gray-100';
+                    cellHTML = `<td class="py-2 px-2 ${bgColor}">${displayVal}</td>`;
+                } else {
+                    cellHTML = `<td class="py-2 px-2">${displayVal}</td>`;
+                }
+
+                rowHTML += cellHTML;
+                if (idx === 8) { // After 9th hole
+                    rowHTML += `<td class="py-2 px-2 font-bold bg-gray-200">${rowData.out}</td>`;
+                }
+            });
+            
+            rowHTML += `<td class="py-2 px-2 font-bold bg-gray-200">${rowData.in}</td>`;
+            rowHTML += `<td class="py-2 px-2 font-bold bg-gray-200">${rowData.total}</td>`;
+            tr.innerHTML = rowHTML;
+            scorecardBody.appendChild(tr);
+        });
+
+        const totalAvg = primaryTotal;
+        avgTotalEl.textContent = formatFixed(totalAvg);
+        const playerDiffValue = computeDifferential(totalAvg);
+        playerDiffEl.textContent = formatSigned(playerDiffValue);
+
+        if (compareName) {
+            compareAvgTotalEl.textContent = formatFixed(compareTotal);
+            const compareDiffValue = computeDifferential(compareTotal);
+            compareDiffEl.textContent = formatSigned(compareDiffValue);
+            avgDeltaTotalEl.textContent = formatSigned(deltaTotalValue);
+        } else {
+            compareAvgTotalEl.textContent = '–';
+            compareDiffEl.textContent = '–';
+            avgDeltaTotalEl.textContent = '–';
+        }
+    }
+
+    const initialPlayer = players.includes('Christopher Royce') ? 'Christopher Royce' : players[0] || null;
+    if (initialPlayer) {
+        playerSelect.value = initialPlayer;
+        compareSelect.value = '';
+        renderScorecard(initialPlayer, null);
+    }
+
+    const getCompareSelection = () => {
+        const value = compareSelect.value;
+        return value && value !== playerSelect.value ? value : null;
+    };
+
+    playerSelect.addEventListener('change', () => {
+        if (compareSelect.value === playerSelect.value) {
+            compareSelect.value = '';
+        }
+        renderScorecard(playerSelect.value, getCompareSelection());
+    });
+
+    compareSelect.addEventListener('change', () => {
+        renderScorecard(playerSelect.value, getCompareSelection());
+    });
+  </script>
+</body>
+</html>

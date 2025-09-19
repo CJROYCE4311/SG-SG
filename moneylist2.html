@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Money List | SG@SG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        th.sortable {
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+        th.sortable::after {
+            content: '';
+            font-size: 0.65rem;
+            margin-left: 0.4rem;
+            color: #047857;
+        }
+        th.sortable[data-sort-direction="asc"]::after {
+            content: '\25B2';
+        }
+        th.sortable[data-sort-direction="desc"]::after {
+            content: '\25BC';
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="SG-SG Map.png" alt="SG-SG Map" class="h-12 w-12 mr-4">
+                <h1 class="text-2xl font-bold text-gray-800">SG@SG</h1>
+                <img src="Sterling Grove Flag.png" alt="Sterling Grove Flag" class="h-12 w-12 ml-4">
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="Index.html#home" class="text-gray-600 hover:text-green-700 transition duration-300">Home</a>
+                <a href="Index.html#events" class="text-gray-600 hover:text-green-700 transition duration-300">Events</a>
+                <a href="Index.html#leaderboard" class="text-gray-600 hover:text-green-700 transition duration-300">Leaderboard</a>
+                <a href="Index.html#contact" class="text-gray-600 hover:text-green-700 transition duration-300">Contact</a>
+            </nav>
+            <a href="Index.html" class="md:hidden text-gray-600 hover:text-green-700 transition duration-300">Menu</a>
+        </div>
+    </header>
+
+    <section class="relative bg-cover bg-center text-white" style="background-image: url('Golf Course.jpeg'); min-height: 35vh;">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-6 py-16 md:py-20 flex flex-col justify-center items-start relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">2025 Money List</h2>
+            <p class="max-w-2xl text-lg md:text-xl text-gray-100">Tracking the season-long earnings for the Saturday Game at Sterling Grove. Search, sort, and explore the leaders for 2025.</p>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-6 py-12">
+        <section class="mb-8 bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-6 border-b border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800">Money List Dashboard</h3>
+                    <p class="text-gray-600">Sort by any column or filter by player name to quickly find the information you need.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+                    <label for="moneylist-search" class="sr-only">Search players</label>
+                    <input id="moneylist-search" type="search" placeholder="Search players..." class="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" autocomplete="off">
+                    <a href="Moneylist.csv" class="inline-flex items-center justify-center px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">Download CSV</a>
+                </div>
+            </div>
+            <div class="p-0">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="sortable text-left text-xs font-semibold text-gray-600 uppercase tracking-wider py-3 px-4" data-type="string">Player</th>
+                                <th scope="col" class="sortable text-left text-xs font-semibold text-gray-600 uppercase tracking-wider py-3 px-4" data-type="currency">Best Ball</th>
+                                <th scope="col" class="sortable text-left text-xs font-semibold text-gray-600 uppercase tracking-wider py-3 px-4" data-type="currency">Net Skins</th>
+                                <th scope="col" class="sortable text-left text-xs font-semibold text-gray-600 uppercase tracking-wider py-3 px-4" data-type="currency">Gross Skins</th>
+                                <th scope="col" class="sortable text-left text-xs font-semibold text-gray-600 uppercase tracking-wider py-3 px-4" data-type="currency">Net Earnings</th>
+                                <th scope="col" class="sortable text-left text-xs font-semibold text-gray-600 uppercase tracking-wider py-3 px-4" data-type="currency">Total Earnings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="moneylist-body" class="bg-white divide-y divide-gray-200 text-sm text-gray-700">
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Shane Bolosan</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$543</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$213</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$174</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$930</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Korey Jerome</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$295</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$178</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$38</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$156</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$667</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Matt Neimeier</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$279</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$128</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$80</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$177</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$664</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Ben Magnone</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$308</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$113</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$222</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$643</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Ron Marino</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$390</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$150</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$540</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Chris Beck</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$477</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$477</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Ron Amstutz</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$192</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$43</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$240</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$475</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Mark Albedyll</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$198</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$210</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$66</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$474</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Paul Benga</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$390</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$68</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$458</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Derek Becko</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$186</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$19</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$192</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$397</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Mike Muller</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$162</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$175</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$33</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$26</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$397</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Dusty Wasmund</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$216</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$155</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$15</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$386</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Hans Anderson</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$258</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$111</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$369</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Larry Caplan</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$168</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$50</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$33</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$114</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$365</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Eric Weiss</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$219</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$67</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$78</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$364</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Buddy Goldstone</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$139</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$125</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$78</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$342</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Justin Deuker</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$339</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$339</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Greg Funk</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$160</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$71</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$84</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$315</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Chris Husong</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$282</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$282</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Jeff Avery</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$108</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$85</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$87</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$280</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Joe Sepessy</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$26</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$132</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$94</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$252</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Kiernan Mattson</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$210</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$28</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$238</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Eric Lamb</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$68</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$168</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$236</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Jon Vrolyks</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$234</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$234</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Chris Ryan</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$123</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$90</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$21</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$234</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Steve McCormick</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$204</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$204</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Frank Angeloro</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$30</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$168</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$198</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Mark James</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$180</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$180</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Thomas Earl</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$105</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$68</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$173</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Travis Ingram</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$90</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$70</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$160</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Jeff Cloepfil</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$70</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$80</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$150</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Scott Bracken</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$96</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$50</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$146</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Jim Restivo</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$35</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$96</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$131</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Jared Strathe</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$45</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$84</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$129</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Leonard Brown</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$117</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$117</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Robert Hill</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$113</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$113</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Clark Koch</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$32</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$43</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$37</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$112</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Rich Fagan</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$43</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$68</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$111</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Christopher Royce</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$111</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$111</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Zach Coe</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$102</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$102</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Mark Lewis</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$90</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$90</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Kevin Barber</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$81</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$81</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Rob Oliver</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$81</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$81</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Neil Harris</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$80</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$80</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Todd Densley</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$42</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$28</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$70</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Trent Dana</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$68</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$68</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Rick Meewes</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$68</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$68</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Andy Meach</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$34</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$32</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$66</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Patrick Schueppert</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$45</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$45</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Tracy Copenhaver</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$39</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$39</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Scott Lucas</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$26</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$26</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">James Feutz</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$21</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$21</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Dan Denham</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Darrin Harn</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Dave Cremer</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Dave Gray</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">David Edwards</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Dean Fisk</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Doug Kennedy</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Kevin Mueller</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Matt Pullen</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Michael Falagrady</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Rich McKeon</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Richard Lederman</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Rick Deloney</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Scott Benton</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Shawn Warner</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Steve Rosenbluth</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Travis Jorgensen</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Zach Fleishman</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Zach Mattson</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Zane Eisenbarth</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Brian Nogueira</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Nick Petlow</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                            <tr data-role="data-row">
+                                <td class="py-3 px-4 whitespace-nowrap font-medium">Anthony Miranda</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                                <td class="py-3 px-4 whitespace-nowrap text-right tabular-nums font-medium">$0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="no-results-message" class="hidden px-6 py-4 text-sm text-gray-500 border-t border-gray-200">No players match your search.</div>
+            </div>
+        </section>
+
+        <section class="grid gap-6 md:grid-cols-2">
+            <article class="bg-white rounded-lg shadow-md p-6">
+                <h4 class="text-lg font-semibold text-gray-800 mb-2">How Rankings Work</h4>
+                <p class="text-gray-600">The money list reflects cumulative earnings from Best Ball, Net Skins, Gross Skins, and Net Medal events. Totals update after each Saturday game to highlight the season leaders.</p>
+            </article>
+            <article class="bg-white rounded-lg shadow-md p-6">
+                <h4 class="text-lg font-semibold text-gray-800 mb-2">Stay Connected</h4>
+                <p class="text-gray-600">Bookmark this page to watch your progress throughout 2025. For past champions and additional stats, explore the rest of the Saturday Game hub.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-6 text-sm text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span>&copy; 2025 Saturday Game at Sterling Grove. All rights reserved.</span>
+            <a href="Index.html#contact" class="text-green-700 hover:text-green-800 transition duration-300">Contact the Committee</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableBody = document.getElementById('moneylist-body');
+            const searchInput = document.getElementById('moneylist-search');
+            const noResultsMessage = document.getElementById('no-results-message');
+            const headers = Array.from(document.querySelectorAll('th.sortable'));
+            const sortState = { index: null, direction: 'asc' };
+            const columnTypes = headers.map(header => header.dataset.type || 'string');
+            const dataRowSelector = 'tr[data-role="data-row"]';
+
+            setSearchAvailability(false);
+
+            const preparedRows = prepareRows();
+            if (preparedRows.length) {
+                const totalColumnIndex = columnTypes.length - 1;
+                sortTable(totalColumnIndex, columnTypes[totalColumnIndex], headers[totalColumnIndex], 'desc');
+            }
+
+            headers.forEach((header, index) => {
+                header.addEventListener('click', () => sortTable(index, columnTypes[index], header));
+            });
+
+            searchInput.addEventListener('input', applySearchFilter);
+            searchInput.addEventListener('search', applySearchFilter);
+
+            function setSearchAvailability(enabled) {
+                searchInput.disabled = !enabled;
+                searchInput.classList.toggle('opacity-60', !enabled);
+                searchInput.classList.toggle('cursor-not-allowed', !enabled);
+                if (!enabled) {
+                    searchInput.value = '';
+                }
+            }
+
+            function prepareRows() {
+                const rows = Array.from(tableBody.querySelectorAll(dataRowSelector));
+                if (!rows.length) {
+                    tableBody.innerHTML = '';
+                    const emptyRow = document.createElement('tr');
+                    const emptyCell = document.createElement('td');
+                    emptyCell.colSpan = headers.length;
+                    emptyCell.className = 'py-6 px-4 text-center text-gray-500';
+                    emptyCell.textContent = 'No money list results available yet.';
+                    emptyRow.appendChild(emptyCell);
+                    tableBody.appendChild(emptyRow);
+                    setSearchAvailability(false);
+                    return [];
+                }
+
+                rows.forEach(row => {
+                    row.querySelectorAll('td').forEach((cell, index) => {
+                        if (columnTypes[index] === 'currency' || columnTypes[index] === 'number') {
+                            const numericValue = cell.textContent.replace(/[^0-9.-]+/g, '');
+                            cell.dataset.sortValue = numericValue || '0';
+                            cell.classList.add('text-right', 'tabular-nums', 'font-medium');
+                        } else {
+                            cell.dataset.sortValue = cell.textContent.trim().toLowerCase();
+                            cell.classList.add('font-medium');
+                        }
+                    });
+                });
+
+                setSearchAvailability(true);
+                return rows;
+            }
+
+            function getCellValue(cell, type) {
+                const rawValue = cell.dataset.sortValue || cell.textContent.trim();
+                if (type === 'currency' || type === 'number') {
+                    const parsed = parseFloat(rawValue);
+                    return Number.isNaN(parsed) ? 0 : parsed;
+                }
+                return rawValue.toString().toLowerCase();
+            }
+
+            function sortTable(index, type, header, forcedDirection = null) {
+                const rows = Array.from(tableBody.querySelectorAll(dataRowSelector));
+                if (!rows.length) {
+                    return;
+                }
+
+                const direction = forcedDirection || (sortState.index === index && sortState.direction === 'asc' ? 'desc' : 'asc');
+
+                rows.sort((rowA, rowB) => {
+                    const a = getCellValue(rowA.children[index], type);
+                    const b = getCellValue(rowB.children[index], type);
+
+                    if (a < b) return direction === 'asc' ? -1 : 1;
+                    if (a > b) return direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+
+                rows.forEach(row => tableBody.appendChild(row));
+
+                headers.forEach(th => th.removeAttribute('data-sort-direction'));
+                header.dataset.sortDirection = direction;
+                sortState.index = index;
+                sortState.direction = direction;
+
+                applySearchFilter();
+            }
+
+            function applySearchFilter() {
+                const query = searchInput.value.trim().toLowerCase();
+                const rows = Array.from(tableBody.querySelectorAll(dataRowSelector));
+
+                if (!rows.length) {
+                    noResultsMessage.classList.add('hidden');
+                    return;
+                }
+
+                let visibleCount = 0;
+                rows.forEach(row => {
+                    const matches = row.textContent.toLowerCase().includes(query);
+                    if (matches) {
+                        row.classList.remove('hidden');
+                        visibleCount += 1;
+                    } else {
+                        row.classList.add('hidden');
+                    }
+                });
+
+                if (visibleCount === 0 && query.length > 0) {
+                    noResultsMessage.classList.remove('hidden');
+                } else {
+                    noResultsMessage.classList.add('hidden');
+                }
+            }
+
+            applySearchFilter();
+        });
+    </script>
+</body>
+</html>

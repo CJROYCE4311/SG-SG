@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturday Game at Sterling Grove</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="SG-SG Map.png" alt="SG-SG Map" class="h-12 w-12 mr-4">
+                <h1 class="text-2xl font-bold text-gray-800">SG@SG</h1>
+                <img src="Sterling Grove Flag.png" alt="Sterling Grove Flag" class="h-12 w-12 ml-4">
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-green-700 transition duration-300">Home</a>
+                <a href="#events" class="text-gray-600 hover:text-green-700 transition duration-300">Events</a>
+                <a href="#leaderboard" class="text-gray-600 hover:text-green-700 transition duration-300">Leaderboard</a>
+                <a href="#contact" class="text-gray-600 hover:text-green-700 transition duration-300">Contact</a>
+            </nav>
+            <button class="md:hidden flex items-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-cover bg-center text-white" style="background-image: url('Golf Course.jpeg'); height: 60vh;">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Saturday Game at Sterling Grove</h2>
+            <a href="#events" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">View Upcoming Events</a>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Past Results Section (Now full width) -->
+        <section class="mb-16">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+                <img src="https://placehold.co/600x400/99BBAA/FFFFFF?text=Past+Results" alt="Past Results" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-center text-gray-800">View Past Results</h3>
+                    <p class="text-gray-600 text-center">Check out the leaderboards and results from previous Saturday games and major tournaments.</p>
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap items-center justify-center text-sm text-gray-500 mb-4 text-transparent">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>Placeholder</span>
+                    </div>
+                    <div class="flex flex-wrap justify-center space-x-2 md:space-x-4">
+                        <a href="Champions Summary.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300">Champions</a>
+                        <a href="MoneyList.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300 mt-2 md:mt-0">Money List</a>
+                        <a href="Best Ball Team Results.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300 mt-2 md:mt-0">Best Ball</a>
+                        <a href="Net Medal Page.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300 mt-2 md:mt-0">Net Medal</a>
+                        <a href="Gross Medal Results.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300 mt-2 md:mt-0">Gross Medal</a>
+                        <a href="Net Skins Page.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300 mt-2 md:mt-0">Net Skins</a>
+                        <a href="Gross Skins Page.HTML" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300 mt-2 md:mt-0">Gross Skins</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events" class="mb-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event Card 1 (Next Tournament) -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+                    <img src="https://placehold.co/600x400/AABB99/FFFFFF?text=Next+Game" alt="Golf Tournament" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Next Tournament</h3>
+                        <p class="text-gray-600 mb-4">Sign up for this month's Saturday game. See who's playing and get ready for a great round.</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span>October 4, 2025</span>
+                        </div>
+                        <a href="https://squabbitgolf.com/" target="_blank" rel="noopener noreferrer" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300">Sign Up on Squabbit</a>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 (Player Information) -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+                    <img src="https://placehold.co/600x400/99BBAA/FFFFFF?text=Participants" alt="Player Participation" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Player Information</h3>
+                        <p class="text-gray-600 mb-4">View the chart of player participation over time.</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4 text-transparent">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span>Placeholder</span>
+                        </div>
+                        <a href="Participants.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300">View Participants</a>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 (Game Formats) -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+                    <img src="https://placehold.co/600x400/BBAA99/FFFFFF?text=Game+Formats" alt="Game Formats" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Game Formats</h3>
+                        <p class="text-gray-600 mb-4">2 Man Best Ball, Net Skins, Gross Skins and Net Medal</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4 text-transparent">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>Placeholder</span>
+                        </div>
+                        <a href="SG-SG Game Format Page.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+<!-- Latest Results Section -->
+<section id="leaderboard" class="bg-white p-8 rounded-lg shadow-lg">
+    <h2 class="text-3xl font-bold text-center mb-8">Latest Results</h2>
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Placement</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Team</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Net Score</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Earnings</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700">
+                <tr class="border-b">
+                    <td class="text-left py-3 px-4">1st</td>
+                    <td class="text-left py-3 px-4 font-medium">Beck / Wasmund</td>
+                    <td class="text-left py-3 px-4">-11</td>
+                    <td class="text-left py-3 px-4">$216</td>
+                </tr>
+                <tr class="bg-gray-50 border-b">
+                    <td class="text-left py-3 px-4">2nd</td>
+                    <td class="text-left py-3 px-4 font-medium">Becko / Avery</td>
+                    <td class="text-left py-3 px-4">-9</td>
+                    <td class="text-left py-3 px-4">$108</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="text-left py-3 px-4">T3rd</td>
+                    <td class="text-left py-3 px-4 font-medium">Ryan / Bolosan</td>
+                    <td class="text-left py-3 px-4">-8</td>
+                    <td class="text-left py-3 px-4">$18</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="text-left py-3 px-4">T3rd</td>
+                    <td class="text-left py-3 px-4 font-medium">Howell / Albedyll</td>
+                    <td class="text-left py-3 px-4">-8</td>
+                    <td class="text-left py-3 px-4">$18</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Sterling Grove Golf and Country Club</h3>
+                    <p class="text-gray-400">11440 North Greenwich Boulevard<br>Surprise, AZ 85388</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="#events" class="text-gray-400 hover:text-white">Events</a></li>
+                        <li class="mb-2"><a href="#leaderboard" class="text-gray-400 hover:text-white">Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Paul Benga: <a href="https://wa.me/14806202088" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                    <p class="text-gray-400">Patrick Schueppert: <a href="https://wa.me/17024996923" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                    <p class="text-gray-400">Chris Royce: <a href="https://wa.me/17195104311" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 SG@SG. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

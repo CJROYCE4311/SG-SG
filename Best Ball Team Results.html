@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Ball Team Results - Saturday Game at Sterling Grove</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .sortable {
+            cursor: pointer;
+            position: relative;
+        }
+        .sortable::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -6px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            opacity: 0.5;
+        }
+        .sort-asc::after {
+            border-bottom: 6px solid white;
+        }
+        .sort-desc::after {
+            border-top: 6px solid white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="SG-SG Map.png" alt="SG-SG Map" class="h-12 w-12 mr-4">
+                <h1 class="text-2xl font-bold text-gray-800">SG@SG</h1>
+                <img src="Sterling Grove Flag.png" alt="Sterling Grove Flag" class="h-12 w-12 ml-4">
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-green-700 transition duration-300">Home</a>
+                <a href="index.html#events" class="text-gray-600 hover:text-green-700 transition duration-300">Events</a>
+                <a href="index.html#leaderboard" class="text-gray-600 hover:text-green-700 transition duration-300">Leaderboard</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-green-700 transition duration-300">Contact</a>
+            </nav>
+            <button class="md:hidden flex items-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Best Ball Results Section -->
+        <section id="results" class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-8">Best Ball Team Results</h2>
+            <div class="flex justify-center mb-6">
+                <select id="dateFilter" class="bg-gray-200 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg focus:outline-none focus:bg-white focus:border-gray-500">
+                    <option value="all">All Dates</option>
+                </select>
+            </div>
+            <div class="overflow-x-auto">
+                <table id="results-table" class="min-w-full bg-white">
+                    <thead class="bg-gray-800 text-white">
+                        <tr>
+                            <th class="sortable text-left py-3 px-4 uppercase font-semibold text-sm" data-column="Placement">Placement</th>
+                            <th class="sortable text-left py-3 px-4 uppercase font-semibold text-sm" data-column="team">Players</th>
+                            <th class="sortable text-left py-3 px-4 uppercase font-semibold text-sm" data-column="net_tot">Net Score</th>
+                            <th class="sortable text-left py-3 px-4 uppercase font-semibold text-sm" data-column="earnings_usd">Earnings</th>
+                            <th class="sortable text-left py-3 px-4 uppercase font-semibold text-sm" data-column="date">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-table-body" class="text-gray-700">
+                        <!-- Rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Sterling Grove Golf and Country Club</h3>
+                    <p class="text-gray-400">11440 North Greenwich Boulevard<br>Surprise, AZ 85388</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="index.html#events" class="text-gray-400 hover:text-white">Events</a></li>
+                        <li class="mb-2"><a href="index.html#leaderboard" class="text-gray-400 hover:text-white">Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Paul Benga: <a href="https://wa.me/14806202088" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                    <p class="text-gray-400">Patrick Schueppert: <a href="https://wa.me/17024996923" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                    <p class="text-gray-400">Chris Royce: <a href="https://wa.me/17195104311" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 SG@SG. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const csvData = `date,team,Placement,net_tot,earnings_usd
+2025-01-04,Jon Vrolyks / Paul Benga,1,-9,234
+2025-01-04,Ben Magnone / Leonard Brown,2,-7,117
+2025-01-04,Andy Meach / Christopher Royce,3,-6,0
+2025-01-04,Matt Neimeier / Tracy Copenhagen,4,-6,39
+2025-01-04,Shawn Warner / Trent Dana,5,-6,0
+2025-01-04,Hans Anderson / Steve Rosenbluth,6,-5,0
+2025-01-04,Clark Koch / Mark Lewis,7,-5,0
+2025-01-04,Ron Marino / Zach Fleishman,8,-5,0
+2025-01-04,Jim Restivo / Rich Fagan,9,-5,0
+2025-01-04,Eric Weiss / Rob Oliver,10,-5,0
+2025-01-04,Frank Angeloro / Ron Amstutz,11,-3,0
+2025-01-04,Chris Beck / Derek Becko,12,-3,0
+2025-01-04,Chris Husong / Neil Harris,13,-3,0
+2025-01-04,Thomas Earl / Todd Densley,14,-2,0
+2025-01-04,Greg Funk / Mike Muller,15,-2,0
+2025-01-04,Scott Benton / Scott Lucas,16,-1,0
+2025-01-04,Buddy Goldstone / Eric Lamb,17,-1,0
+2025-01-04,Dusty Wasmund / Rick Deloney,18,-1,0
+2025-01-04,Travis Ingram / Zach Coe,19,0,0
+2025-01-04,Richard Lederman,20,2,0
+2025-02-08,Chris Beck / Steve McCormick,1,-10,408
+2025-02-08,Chris Husong / Zach Coe,2,-9,204
+2025-02-08,Andy Meach / Buddy Goldstone,3,-9,68
+2025-02-08,Frank Angeloro / Rob Oliver,4,-9,0
+2025-02-08,Greg Funk / Kiernan Mattson,5,-8,0
+2025-02-08,Christopher Royce / Jim Restivo,6,-7,0
+2025-02-08,Matt Neimeier / Travis Ingram,7,-7,0
+2025-02-08,James Feutz / Scott Lucas,8,-7,0
+2025-02-08,Justin Deuker / Mike Muller,9,-6,0
+2025-02-08,Robert Hill / Steve Rosenbluth,10,-5,0
+2025-02-08,Darrin Harn / Ron Marino,11,-5,0
+2025-02-08,Paul Benga / Zane Eisenbarth,12,-4,0
+2025-02-08,Patrick Schueppert / Shane Bolosan,13,-4,0
+2025-02-08,Neil Harris / Rick Deloney,14,-3,0
+2025-02-08,Eric Weiss / Jared Strathe,15,-2,0
+2025-02-08,Rich McKeon / Richard Lederman,16,-1,0
+2025-02-08,Trent Dana,17,1,0
+2025-02-08,Tracy Copenhaver,18,11,0
+2025-03-08,Justin Deuker / Matt Neimeier,1,-11,210
+2025-03-08,Buddy Goldstone / Thomas Earl,2,-8,105
+2025-03-08,Greg Funk / Jim Restivo,3,-7,35
+2025-03-08,Scott Bracken / Zach Fleishman,4,-7,0
+2025-03-08,Clark Koch / Frank Angeloro,5,-7,0
+2025-03-08,Steve Rosenbluth / Travis Ingram,6,-7,0
+2025-03-08,Paul Benga / Ron Amstutz,7,-6,0
+2025-03-08,Derek Becko / Dusty Wasmund,8,-6,0
+2025-03-08,Chris Beck / Rob Oliver,9,-6,0
+2025-03-08,Ben Magnone / Mike Muller,10,-4,0
+2025-03-08,Christopher Royce / Patrick Schueppert,11,-4,0
+2025-03-08,Shane Bolosan / Steve McCormick,12,-4,0
+2025-03-08,David Edwards / Trent Dana,13,-3,0
+2025-03-08,Eric Weiss / Mark Lewis,14,-3,0
+2025-03-08,Robert Hill / Travis Jorgensen,15,-2,0
+2025-03-08,Chris Ryan / Zane Eisenbarth,16,-1,0
+2025-03-08,Mark James / Neil Harris,17,1,0
+2025-03-08,Rick Deloney,18,2,0
+2025-04-05,Hans Anderson / Shane Bolosan,1,-10,258
+2025-04-05,Ben Magnone / Justin Deuker,2,-9,129
+2025-04-05,Korey Jerome / Rich Fagan,3,-8,43
+2025-04-05,Chris Beck / Christopher Royce,4,-7,0
+2025-04-05,Steve McCormick / Todd Densley,5,-7,0
+2025-04-05,Frank Angeloro / Greg Funk,6,-7,0
+2025-04-05,Paul Benga / Zach Fleishman,7,-6,0
+2025-04-05,Chris Husong / Trent Dana,8,-6,0
+2025-04-05,Rick Deloney / Steve Rosenbluth,9,-5,0
+2025-04-05,Dean Fisk / Richard Lederman,10,-4,0
+2025-04-05,Kevin Barber / Mike Muller,11,-4,0
+2025-04-05,Zane Eisenbarth / Zach Mattson,12,-4,0
+2025-04-05,Andy Meach / Thomas Earl,13,-4,0
+2025-04-05,Ron Amstutz / Travis Ingram,14,-4,0
+2025-04-05,Jon Vrolyks / Scott Bracken,15,-3,0
+2025-04-05,Shawn Warner / Zach Coe,16,-3,0
+2025-04-05,Clark Koch / Derek Becko,17,-3,0
+2025-04-05,Buddy Goldstone / Neil Harris,18,-3,0
+2025-04-05,Dusty Wasmund / Kiernan Mattson,19,-2,0
+2025-04-05,Jim Restivo / Matt Neimeier,20,-1,0
+2025-04-05,Patrick Schueppert / Robert Hill,21,0,0
+2025-04-05,Mark Lewis,22,4,0
+2025-05-10,Chris Husong / Ron Marino,1,-8,0
+2025-05-10,Mark Lewis / Travis Ingram,2,-7,0
+2025-05-10,Chris Beck / Frank Angeloro,3,-6,0
+2025-05-10,Dusty Wasmund / Eric Lamb,4,-6,0
+2025-05-10,Paul Benga / Rick Meeuwes,5,-6,0
+2025-05-10,Kevin Mueller / Todd Densley,6,-5,0
+2025-05-10,Ben Magnone / Ron Amstutz,7,-4,0
+2025-05-10,Greg Funk / Zach Coe,8,-3,0
+2025-05-10,Neil Harris / Scott Bracken,9,-2,0
+2025-05-10,Korey Jerome / Shane Bolosan,10,-1,0
+2025-05-10,Andy Meach / Jeff Avery,11,-1,0
+2025-05-10,Christopher Royce / Rich Fagan,12,-1,0
+2025-05-10,Patrick Schueppert / Steve McCormick,13,-1,0
+2025-05-10,Kiernan Mattson / Tracy Copenhaver,14,1,0
+2025-05-10,Richard Lederman / Robert Hill,15,4,0
+2025-06-07,Eric Weiss / Ron Amstutz,1,-12,192
+2025-06-07,Korey Jerome / Scott Bracken,2,-10,96
+2025-06-07,Ben Magnone / Clark Koch,3,-10,32
+2025-06-07,Chris Beck / Zach Fleishman,4,-8,0
+2025-06-07,Dusty Wasmund / Steve McCormick,5,-8,0
+2025-06-07,Jeff Cloepfil / Jon Vrolyks,6,-7,0
+2025-06-07,Derek Becko / Travis Ingram,7,-7,0
+2025-06-07,Mark Albedyl / Neil Harris,8,-7,0
+2025-06-07,Kevin Barber / Richard Lederman,9,-7,0
+2025-06-07,Mike Muller / Zane Eisenbarth,10,-6,0
+2025-06-07,Dean Fisk / Todd Densley,11,-5,0
+2025-06-07,Christopher Royce / Rick Deloney,12,-5,0
+2025-06-07,Frank Angeloro / Scott Lucas,13,-5,0
+2025-06-07,Greg Funk / Shane Bolosan,14,-4,0
+2025-06-07,Kiernan Mattson / Trent Dana,15,-3,0
+2025-06-07,Patrick Schueppert / Paul Benga,16,-1,0
+2025-07-19,Korey Jerome / Paul Benga,1,-8,156
+2025-07-19,Derek Becko / Larry Caplan,2,-8,78
+2025-07-19,Joe Sepessy / Scott Lucas,3,-7,26
+2025-07-19,Mark Albedyll / Neil Harris,4,-6,0
+2025-07-19,Frank Angeloro / Kevin Barber,5,-5,0
+2025-07-19,Dusty Wasmund / Scott Benton,6,-5,0
+2025-07-19,Clark Koch / Rich Fagan,7,-5,0
+2025-07-19,Ben Magnone / Trent Dana,8,-5,0
+2025-07-19,Greg Funk / Matt Neimeier,9,-4,0
+2025-07-19,Jeff Cloepfil / Scott Bracken,10,-2,0
+2025-07-19,Rob Oliver / Shane Bolosan,11,-2,0
+2025-07-19,Dan Denham / Rick Deloney,12,-1,0
+2025-07-19,Chris Ryan / Christopher Royce,13,1,0
+2025-08-09,Mark Albedyll / Mark James,1,-7,180
+2025-08-09,Greg Funk / Larry Caplan,2,-7,90
+2025-08-09,Ben Magnone / Matt Neimeier,3,-6,30
+2025-08-09,Jeff Cloepfil / Travis Ingram,4,-6,0
+2025-08-09,Korey Jerome / Patrick Schueppert,5,-5,0
+2025-08-09,Michael Falagrady / Steve McCormick,6,-4,0
+2025-08-09,Christopher Royce / Eric Weiss,7,-4,0
+2025-08-09,Dean Fisk / Joe Sepessy,8,-3,0
+2025-08-09,Neil Harris / Shane Bolosan,9,-3,0
+2025-08-09,Clark Koch / Scott Bracken,10,-3,0
+2025-08-09,Mike Muller / Scott Benton,11,-3,0
+2025-08-09,Chris Ryan / Hans Anderson,12,-3,0
+2025-08-09,Jim Restivo / Paul Benga,13,-2,0
+2025-08-09,Chris Husong / Robert Hill,14,-1,0
+2025-08-09,Justin Deuker / Rich Fagan,15,0,0
+2025-09-13,Chris Beck / Dusty Wasmund,1,-11,432
+2025-09-13,Derek Becko / Jeff Avery,2,-9,216
+2025-09-13,Christopher Royce / Kevin Barber,5,-7,0
+2025-09-13,Ben Magnone / Steve McCormick,13,-3,0
+2025-09-13,Jon Vrolyks / Zane Eisenbarth,16,-1,0
+2025-09-13,Korey Jerome / Scott Benton,17,0,0
+2025-09-13,Conrad Copeland / Mike Muller,18,2,0
+2025-09-13,Jamey Davis / Mark Lewis,10,-4,0
+2025-09-13,Michael Falagrady / Stephen Cherepy,10,-4,0
+2025-09-13,Matt Neimeier / Robert Hill,10,-4,0
+2025-09-13,Clark Koch / Larry Caplan,14,-2,0
+2025-09-13,Greg Funk / Patrick Schueppert,14,-2,0
+2025-09-13,Chris Ryan / Shane Bolosan,3,-8,36
+2025-09-13,Brian Howell / Mark Albedyll,3,-8,36
+2025-09-13,Jeff Cloepfil / Paul Benga,6,-6,0
+2025-09-13,Joe Sepessy / Kiernan Mattson,6,-6,0
+2025-09-13,Hans Anderson / Travis Ingram,8,-5,0
+2025-09-13,Eric Weiss / Jeff De Laveaga,8,-5,0`;
+
+        let teamResults = [];
+        let currentSort = { column: 'date', direction: 'desc' };
+
+        function parseCSV(data) {
+            const lines = data.trim().split('\n');
+            const headers = lines[0].split(',');
+            const rows = [];
+            for (let i = 1; i < lines.length; i++) {
+                // Handle potential malformed rows
+                if (lines[i].startsWith('2-25-04-05')) {
+                    lines[i] = '2025-04-05' + lines[i].substring(10);
+                }
+                const values = lines[i].split(',');
+                if (values.length === headers.length) {
+                    const row = {};
+                    for (let j = 0; j < headers.length; j++) {
+                        row[headers[j].trim()] = values[j] ? values[j].trim() : '';
+                    }
+                    rows.push(row);
+                }
+            }
+            return rows;
+        }
+        
+        const tableBody = document.getElementById('results-table-body');
+        const dateFilter = document.getElementById('dateFilter');
+
+        function populateTable() {
+            const selectedDate = dateFilter.value;
+            let dataToDisplay = teamResults;
+
+            if (selectedDate !== 'all') {
+                dataToDisplay = teamResults.filter(row => row.date === selectedDate);
+            }
+            
+            // Apply sorting
+            dataToDisplay.sort((a, b) => {
+                const col = currentSort.column;
+                const dir = currentSort.direction === 'asc' ? 1 : -1;
+                
+                let valA = a[col];
+                let valB = b[col];
+
+                // Type-specific comparison
+                if (col === 'Placement' || col === 'net_tot') {
+                    valA = parseInt(valA, 10);
+                    valB = parseInt(valB, 10);
+                } else if (col === 'earnings_usd') {
+                    valA = parseFloat(valA) || 0;
+                    valB = parseFloat(valB) || 0;
+                } else if (col === 'date') {
+                    valA = new Date(valA);
+                    valB = new Date(valB);
+                }
+
+                if (valA < valB) return -1 * dir;
+                if (valA > valB) return 1 * dir;
+                return 0;
+            });
+
+
+            tableBody.innerHTML = '';
+            dataToDisplay.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                tr.className = index % 2 === 0 ? 'bg-gray-50 border-b' : 'border-b';
+                const earnings = row.earnings_usd ? `$${parseFloat(row.earnings_usd).toFixed(2)}` : '$0.00';
+                tr.innerHTML = `
+                    <td class="text-left py-3 px-4">${row.Placement}</td>
+                    <td class="text-left py-3 px-4 font-medium">${row.team}</td>
+                    <td class="text-left py-3 px-4">${row.net_tot}</td>
+                    <td class="text-left py-3 px-4">${earnings}</td>
+                    <td class="text-left py-3 px-4">${row.date}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+        
+        function populateDateFilter() {
+            const uniqueDates = [...new Set(teamResults.map(item => item.date))];
+            uniqueDates.sort().reverse(); // Show most recent dates first
+            uniqueDates.forEach(date => {
+                const option = document.createElement('option');
+                option.value = date;
+                option.textContent = date;
+                dateFilter.appendChild(option);
+            });
+        }
+        
+        function updateSortHeaders() {
+            document.querySelectorAll('.sortable').forEach(header => {
+                header.classList.remove('sort-asc', 'sort-desc');
+                if (header.dataset.column === currentSort.column) {
+                    header.classList.add(currentSort.direction === 'asc' ? 'sort-asc' : 'sort-desc');
+                }
+            });
+        }
+
+        document.querySelectorAll('.sortable').forEach(header => {
+            header.addEventListener('click', () => {
+                const column = header.dataset.column;
+                const direction = (currentSort.column === column && currentSort.direction === 'desc') ? 'asc' : 'desc';
+                currentSort = { column, direction };
+                updateSortHeaders();
+                populateTable();
+            });
+        });
+
+        dateFilter.addEventListener('change', populateTable);
+
+        // Initial setup
+        teamResults = parseCSV(csvData);
+        populateDateFilter();
+        updateSortHeaders();
+        populateTable();
+
+    </script>
+</body>
+</html>
