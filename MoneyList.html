@@ -219,6 +219,9 @@ Mickey Mouse,$1000,$1000,$1000,$1000,$4000`;
         window.onload = function() {
             playersData = parseCSV(csvData);
             populateTable();
+            // Pre-set total earnings sort so initial call renders descending order
+            sortDirections[5] = 'asc';
+            sortTable(5);
         };
 
         // Populate table with data
