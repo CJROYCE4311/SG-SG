@@ -116,7 +116,8 @@
     <script>
         // Paste your plain text CSV data here. Each line should be:
         // Player Name,Best Ball,Net Skins,Gross Skins,Net Earnings,Total Earnings
-        const csvData = `Shane Bolosan,$543,$213,$0,$174,$930
+        const csvData = `Name,Best_Ball_Earnings,Net_Skins_Earnings,Gross_Skins_Earnings,Net_Earnings,Total Earnings
+Shane Bolosan,$543,$213,$0,$174,$930
 Korey Jerome,$295,$178,$38,$156,$667
 Matt Neimeier,$279,$128,$80,$177,$664
 Ben Magnone,$308,$113,$0,$222,$643
@@ -190,14 +191,22 @@ Zach Mattson,$0,$0,$0,$0,$0
 Zane Eisenbarth,$0,$0,$0,$0,$0
 Brian Nogueira,$0,$0,$0,$0,$0
 Nick Petlow,$0,$0,$0,$0,$0
-Anthony Miranda,$0,$0,$0,$0,$0`;
+Anthony Miranda,$0,$0,$0,$0,$0
+Mickey Mouse,$1000,$1000,$1000,$1000,$4000`;
 
         let playersData = [];
 
         // Parse the CSV data string into an array of arrays
         function parseCSV(data) {
-            const lines = data.trim().split('\n');
-            return lines.map(line => line.split(',').map(item => item.trim()));
+            const lines = data.trim().split(/\r?\n/);
+            const rows = lines.map(line => line.split(',').map(item => item.trim()));
+
+            // Drop the header row if the first cell matches the column name
+            if (rows.length && rows[0][0].toLowerCase() === 'name') {
+                return rows.slice(1);
+            }
+
+            return rows;
         }
 
         // Format amount to ensure .00 decimals
@@ -318,4 +327,3 @@ Anthony Miranda,$0,$0,$0,$0,$0`;
     </script>
 </body>
 </html>
-
