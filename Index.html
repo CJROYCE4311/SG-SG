@@ -36,7 +36,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="relative bg-cover bg-center text-white" style="background-image: url('IMGGolfCourse.jpeg'); height: 60vh;">
+    <section id="home" class="relative bg-cover bg-center text-white" style="background-image: url('IMGGolfCourse.jpeg'); height: 20vh;">
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center relative z-10">
             <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Saturday Game at Sterling Grove</h2>
@@ -50,9 +50,24 @@
         <!-- Upcoming Events Section -->
         <section id="events" class="mb-16">
             <div class="space-y-8">
+                <!-- Latest Announcement Card -->
+                <div id="leaderboard" class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-center mb-4">Latest Announcement</h2>
+                        <div class="space-y-2 leading-relaxed text-gray-700">
+                            <p class="font-semibold">Changes from last year:</p>
+                            <p>App change - Squabbit to GolfGenius.</p>
+                            <p>2 man game now has a rotating 3 month of games: Team Best Ball, Team Total Quota, and Team Total Stableford.</p>
+                            <p>Added a Gross medal.</p>
+                            <p>Added CTP for every round.</p>
+                            <p>Lights on the golf course, no matter where (long grass, rock, dirt, etc.), will be played as a free drop for stance and swing, not line of sight.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Event Card 1 (Next Tournament) -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    <img src="IMG_Sign-Ups.png" alt="Golf Tournament" class="w-full h-20.5 object-cover">
+                    <img src="IMG_Sign-Ups.png" alt="Golf Tournament" class="w-full object-cover" style="height: 150px;">
                     <div class="p-6">
                         </div>
                         <div class="flex items-center justify-center text-2xl text-gray-500 mb-4">
@@ -105,11 +120,15 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
                                 <div>
                                     <h4 class="text-lg font-semibold mb-3">Results</h4>
-                                    <a href="https://docs.google.com/document/d/1h-vTlEQG3aUbTIVptYTTKeCO56QrkYcyAvoU1YmJNHY/edit?tab=t.0" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300">2025 Results</a>
+                                    <div class="flex flex-col items-center gap-3">
+                                        <a href="https://docs.google.com/document/d/1XUyzmwk46N9mTRxmzhO_6q-3eB5y89dLTLtqtPIe-_I/edit?tab=t.h3r9i53uw96t" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300">2026 Results</a>
+                                        <a href="https://docs.google.com/document/d/1h-vTlEQG3aUbTIVptYTTKeCO56QrkYcyAvoU1YmJNHY/edit?tab=t.0" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300">2025 Results</a>
+                                    </div>
                                 </div>
                                 <div>
                                     <h4 class="text-lg font-semibold mb-3">Announcements</h4>
                                     <a href="https://docs.google.com/document/d/1KqulpUbZx-K0uA-NKjcHivP5Ho4lGHhRz_90dLRxqoY/edit?tab=t.0" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300">Announcements</a>
+                                    <a href="https://docs.google.com/document/d/1TToG9gAWwPGc6x2cdtzbOWFPNCK7Igial3WpOpHVWis/edit?tab=t.0" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md transition duration-300 mt-3">About SG@SG</a>
                                 </div>
                             </div>
                         </div>
@@ -126,49 +145,6 @@
                 </div>
             </div>
         </section>
-        
-<!-- Latest Results Section -->
-<section id="leaderboard" class="bg-white p-8 rounded-lg shadow-lg">
-    <h2 class="text-3xl font-bold text-center mb-8">Latest Announcement</h2>
-    <div class="overflow-x-auto">
-        <table class="min-w-full bg-white">
-            <thead class="bg-gray-800 text-white">
-                <tr>
-                </tr>    
-            </thead>
-            <tbody class="text-gray-700">
-                <tr class="border-b">
-                    <td class="text-left py-4 px-4" colspan="4">
-                        <div class="space-y-2 leading-relaxed">
-                            <p>Alright, alright, alright... Our last SG@SG of the season is a wrap... results are in.</p>
-                            <p class="font-semibold">Team game:</p>
-                            <p>Lucas/Densley -12 $192 each</p>
-                            <p>Beck/Vrolyks -11 $96 each</p>
-                            <p>Davis/Marino -8 $32 each</p>
-                            <p class="font-semibold">Low individual Net:</p>
-                            <p>Davis -4 $168</p>
-                            <p>Lucas -3 $84</p>
-                            <p>Cloepfil Even $28</p>
-                            <p class="font-semibold">Net Skins:</p>
-                            <p>Lucas x2 #9 #10 $140</p>
-                            <p>Ackley #16 $70</p>
-                            <p>Oliver #3 $70</p>
-                            <p class="font-semibold">Gross Skins:</p>
-                            <p>Harris x3 #1 #7 #9 $82.50</p>
-                            <p>Wasmund x2 #2 #15 $55</p>
-                            <p>Sepessy #17 $27.50</p>
-                            <p>Ackley #16 $27.50</p>
-                            <p>Funk #3 $27.50</p>
-                            <p>Enjoy the rest of October (aka honey-do month) and we will see you in November after overseed.</p>
-                            <p>Our next game will be Saturday, November 15. See you then.</p>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
     </main>
 
     <!-- Footer Section -->
