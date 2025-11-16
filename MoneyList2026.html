@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SG@SG Money List 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .sortable {
+            cursor: pointer;
+            position: relative;
+        }
+        .sortable::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -6px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            opacity: 0.5;
+        }
+        .sort-asc::after {
+            border-bottom: 6px solid white;
+        }
+        .sort-desc::after {
+            border-top: 6px solid white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="SG-SG Map.png" alt="SG-SG Map" class="h-12 w-12 mr-4">
+                <h1 class="text-2xl font-bold text-gray-800">SG@SG</h1>
+                <img src="Sterling Grove Flag.png" alt="Sterling Grove Flag" class="h-12 w-12 ml-4">
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-green-700 transition duration-300">Home</a>
+                <a href="index.html#events" class="text-gray-600 hover:text-green-700 transition duration-300">Events</a>
+                <a href="index.html#leaderboard" class="text-gray-600 hover:text-green-700 transition duration-300">Leaderboard</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-green-700 transition duration-300">Contact</a>
+            </nav>
+            <button class="md:hidden flex items-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-12">
+        <section id="money-list" class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-8">SG@SG Money List 2026</h2>
+            
+            <!-- Search Input -->
+            <div class="controls-container mb-6">
+                <input type="text" id="searchInput" onkeyup="searchPlayer()" placeholder="Search for player name (min. 3 characters)..." class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:border-gray-500">
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table id="moneyTable" class="min-w-full bg-white">
+                    <thead class="bg-gray-800 text-white">
+                        <tr>
+                            <th class="sortable text-left py-3 px-4 uppercase font-semibold text-sm" data-column="player" onclick="sortTable(0)">Player</th>
+                            <th class="sortable text-center py-3 px-4 uppercase font-semibold text-sm" data-column="best_ball" onclick="sortTable(1)">Best Ball ($)</th>
+                            <th class="sortable text-center py-3 px-4 uppercase font-semibold text-sm" data-column="net_skins" onclick="sortTable(2)">Net Skins ($)</th>
+                            <th class="sortable text-center py-3 px-4 uppercase font-semibold text-sm" data-column="gross_skins" onclick="sortTable(3)">Gross Skins ($)</th>
+                            <th class="sortable text-center py-3 px-4 uppercase font-semibold text-sm" data-column="net_earnings" onclick="sortTable(4)">Net Earnings ($)</th>
+                            <th class="sortable text-center py-3 px-4 uppercase font-semibold text-sm" data-column="total_earnings" onclick="sortTable(5)">Total Earnings ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="text-gray-700">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Sterling Grove Golf and Country Club</h3>
+                    <p class="text-gray-400">11440 North Greenwich Boulevard<br>Surprise, AZ 85388</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="index.html#events" class="text-gray-400 hover:text-white">Events</a></li>
+                        <li class="mb-2"><a href="index.html#leaderboard" class="text-gray-400 hover:text-white">Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Paul Benga: <a href="https://wa.me/14806202088" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                    <p class="text-gray-400">Patrick Schueppert: <a href="https://wa.me/17024996923" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                    <p class="text-gray-400">Chris Royce: <a href="https://wa.me/17195104311" class="hover:text-white" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2026 SG@SG. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Paste your plain text CSV data here. Each line should be:
+        // Player Name,Best Ball,Net Skins,Gross Skins,Net Earnings,Total Earnings
+        const csvData = `Name,Best_Ball_Earnings,Net_Skins_Earnings,Gross_Skins_Earnings,Net_Earnings,Total Earnings
+Mark Lewis,$47,$108,$0,$180,$335
+Ron Marino,$47,$108,$165,$0,$320
+Michael Falagrady,$282,$0,$0,$0,$282
+Chris Ryan,$282,$0,$0,$0,$282
+Paul Benga,$47,$0,$0,$180,$227
+Andrew Burnheimer,$0,$0,$165,$0,$165
+Jeff Avery,$47,$108,$0,$0,$155
+Dusty Wasmund,$0,$108,$0,$0,$108
+Steve McCormick,$47,$0,$0,$0,$47
+Kevin Barber,$47,$0,$0,$0,$47
+Frank Angeloro,$47,$0,$0,$0,$47
+Dan Denham,$47,$0,$0,$0,$47
+Stewart Polakov,$0,$0,$0,$40,$40
+Zane Eisenbarth,$0,$0,$0,$0,$0
+Trent Dana,$0,$0,$0,$0,$0
+Travis Ingram,$0,$0,$0,$0,$0
+Tracy Copenhaver,$0,$0,$0,$0,$0
+Todd Densley,$0,$0,$0,$0,$0
+Steve Rosenbluth,$0,$0,$0,$0,$0
+Shane Bolosan,$0,$0,$0,$0,$0
+Scott Benton,$0,$0,$0,$0,$0
+Robert Hill *Captain *,$0,$0,$0,$0,$0
+Rick Meewes,$0,$0,$0,$0,$0
+Rick Deloney,$0,$0,$0,$0,$0
+Richard Lederman,$0,$0,$0,$0,$0
+Rich McKeon,$0,$0,$0,$0,$0
+Patrick Schueppert,$0,$0,$0,$0,$0
+Neil Harris,$0,$0,$0,$0,$0
+Nate Adams,$0,$0,$0,$0,$0
+Mike Muller,$0,$0,$0,$0,$0
+Larry Caplan,$0,$0,$0,$0,$0
+Korey Jerome,$0,$0,$0,$0,$0
+Jon Vrolyks,$0,$0,$0,$0,$0
+Joe Sepessy,$0,$0,$0,$0,$0
+Jeff De Laveaga,$0,$0,$0,$0,$0
+Jeff Cloepfil,$0,$0,$0,$0,$0
+Jared Strathe,$0,$0,$0,$0,$0
+Jamey Davis,$0,$0,$0,$0,$0
+Greg Funk,$0,$0,$0,$0,$0
+Eric Weiss,$0,$0,$0,$0,$0
+David Pearson,$0,$0,$0,$0,$0
+Dana Beckley,$0,$0,$0,$0,$0
+Clark Koch,$0,$0,$0,$0,$0
+Christopher Royce,$0,$0,$0,$0,$0
+Chris Beck,$0,$0,$0,$0,$0
+Bud Scott,$0,$0,$0,$0,$0
+Ben Magnone,$0,$0,$0,$0,$0
+Andy Meach,$0,$0,$0,$0,$0`;
+
+        let playersData = [];
+
+        // Parse the CSV data string into an array of arrays
+        function parseCSV(data) {
+            const lines = data.trim().split(/\r?\n/);
+            const rows = lines.map(line => line.split(',').map(item => item.trim()));
+
+            // Drop the header row if the first cell matches the column name
+            if (rows.length && rows[0][0].toLowerCase() === 'name') {
+                return rows.slice(1);
+            }
+
+            return rows;
+        }
+
+        // Format amount to ensure .00 decimals
+        function formatAmount(amt) {
+            const num = parseFloat(amt.replace('$', '').replace(',', '')) || 0;
+            return `$${num.toFixed(2)}`;
+        }
+
+        // Populate table on page load
+        window.onload = function() {
+            playersData = parseCSV(csvData);
+            populateTable();
+            // Pre-set total earnings sort so initial call renders descending order
+            sortDirections[5] = 'asc';
+            sortTable(5);
+        };
+
+        // Populate table with data
+        function populateTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            playersData.forEach((player, index) => {
+                const row = tbody.insertRow();
+                row.className = index % 2 === 0 ? 'border-b' : 'bg-gray-50 border-b';
+                
+                // Ensure player array has enough columns to avoid errors
+                if (player.length >= 6) {
+                    row.innerHTML = `
+                        <td class="text-left py-3 px-4">${player[0]}</td>
+                        <td class="text-center py-3 px-4">${formatAmount(player[1])}</td>
+                        <td class="text-center py-3 px-4">${formatAmount(player[2])}</td>
+                        <td class="text-center py-3 px-4">${formatAmount(player[3])}</td>
+                        <td class="text-center py-3 px-4">${formatAmount(player[4])}</td>
+                        <td class="text-center py-3 px-4">${formatAmount(player[5])}</td>
+                    `;
+                }
+            });
+        }
+
+        // Object to track the sorting direction for each column
+        const sortDirections = {};
+
+        // Sort table function
+        function sortTable(columnIndex) {
+            const table = document.getElementById("moneyTable");
+            const tbody = table.tBodies[0];
+            const rows = Array.from(tbody.rows);
+            const header = table.tHead.rows[0].cells[columnIndex];
+
+            // Determine sort direction
+            const direction = sortDirections[columnIndex] === 'asc' ? 'desc' : 'asc';
+            sortDirections[columnIndex] = direction;
+
+            // Remove sorting classes from all headers
+            document.querySelectorAll('#moneyTable th').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+            });
+
+            // Add sorting class to current header
+            header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
+
+            // Sort the rows
+            rows.sort((rowA, rowB) => {
+                const cellA = rowA.cells[columnIndex].innerText;
+                const cellB = rowB.cells[columnIndex].innerText;
+
+                let valA, valB;
+
+                if (columnIndex > 0) {
+                    valA = parseFloat(cellA.replace(/[^0-9.-]+/g, ""));
+                    valB = parseFloat(cellB.replace(/[^0-9.-]+/g, ""));
+                } else {
+                    valA = cellA.toLowerCase();
+                    valB = cellB.toLowerCase();
+                }
+
+                if (valA < valB) {
+                    return direction === 'asc' ? -1 : 1;
+                }
+                if (valA > valB) {
+                    return direction === 'asc' ? 1 : -1;
+                }
+                return 0;
+            });
+
+            // Re-append sorted rows
+            rows.forEach((row, index) => {
+                row.className = index % 2 === 0 ? 'border-b' : 'bg-gray-50 border-b';
+                tbody.appendChild(row);
+            });
+        }
+
+        // Search function
+        function searchPlayer() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toUpperCase();
+            const tableBody = document.getElementById("tableBody");
+            const rows = tableBody.getElementsByTagName("tr");
+
+            // Only filter if input length is 3 or more characters
+            if (filter.length >= 3) {
+                for (let i = 0; i < rows.length; i++) {
+                    const playerNameCell = rows[i].getElementsByTagName("td")[0];
+                    if (playerNameCell) {
+                        const txtValue = playerNameCell.textContent || playerNameCell.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            rows[i].style.display = "";
+                        } else {
+                            rows[i].style.display = "none";
+                        }
+                    }
+                }
+            } else {
+                // Show all rows if less than 3 characters
+                for (let i = 0; i < rows.length; i++) {
+                    rows[i].style.display = "";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
