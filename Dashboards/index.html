@@ -45,42 +45,87 @@
 
     <!-- Main Content Area -->
     <main class="container mx-auto px-6 py-12">
-        
-        <!-- Dashboard Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Dashboard Card 1: Average Score by Hole -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 flex flex-col">
-                <div class="h-48 bg-gray-200 flex items-center justify-center relative overflow-hidden group">
-                    <!-- Placeholder visual for the dashboard -->
-                    <img src="https://placehold.co/600x400/22c55e/FFFFFF?text=Hole+Averages" alt="Hole Statistics" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
-                </div>
-                <div class="p-6 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Hole Scoring Averages</h3>
-                    <p class="text-gray-600 mb-4 flex-1">Analyze the difficulty of the course hole-by-hole. View average gross scores and performance relative to par using our speedometer gauges.</p>
-                    <a href="averagescore.html" class="inline-block w-full text-center bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-md transition duration-300">
-                        View Dashboard
-                    </a>
-                </div>
+        <!-- 2026 Season -->
+        <section class="mb-12">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-6 gap-2">
+                <h3 class="text-2xl font-bold text-gray-800">2026 Season</h3>
+                <p class="text-gray-600">Quick access to current-season payouts and performance dashboards.</p>
             </div>
 
-            <!-- Dashboard Card 2: Player Net Performance -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 flex flex-col">
-                <div class="h-48 bg-gray-200 flex items-center justify-center relative overflow-hidden group">
-                    <img src="https://placehold.co/600x400/2563eb/FFFFFF?text=Player+Net+Performance" alt="Player Statistics" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dashboard Card: 2026 Money List -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 flex flex-col">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center relative overflow-hidden group">
+                        <img src="https://placehold.co/600x400/f97316/FFFFFF?text=Money+List+2026" alt="2026 Money List" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">2026 Money List</h3>
+                        <p class="text-gray-600 mb-4 flex-1">Track weekly earnings, payouts, and season-long winnings as the 2026 race unfolds.</p>
+                        <a href="MoneyList2026.html" class="inline-block w-full text-center bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                            View Dashboard
+                        </a>
+                    </div>
                 </div>
-                <div class="p-6 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Player Net Performance</h3>
-                    <p class="text-gray-600 mb-4 flex-1">Rank players by average gross and net scores with gauges that spotlight net-to-par trends across the roster.</p>
-                    <a href="PlayerStats.html" class="inline-block w-full text-center bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-md transition duration-300">
-                        View Dashboard
-                    </a>
+                
+                <!-- Dashboard Card 1: Average Score by Hole -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 flex flex-col">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center relative overflow-hidden group">
+                        <!-- Placeholder visual for the dashboard -->
+                        <img src="https://placehold.co/600x400/22c55e/FFFFFF?text=Hole+Averages" alt="Hole Statistics" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Hole Scoring Averages</h3>
+                        <p class="text-gray-600 mb-4 flex-1">Analyze the difficulty of the course hole-by-hole. View average gross scores and performance relative to par using our speedometer gauges.</p>
+                        <a href="averagescore.html" class="inline-block w-full text-center bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                            View Dashboard
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Dashboard Card 2: Player Net Performance -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 flex flex-col">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center relative overflow-hidden group">
+                        <img src="https://placehold.co/600x400/2563eb/FFFFFF?text=Player+Net+Performance" alt="Player Statistics" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Player Net Performance</h3>
+                        <p class="text-gray-600 mb-4 flex-1">Rank players by average gross and net scores with gauges that spotlight net-to-par trends across the roster.</p>
+                        <a href="PlayerStats.html" class="inline-block w-full text-center bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                            View Dashboard
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2025 Season -->
+        <section>
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-6 gap-2">
+                <h3 class="text-2xl font-bold text-gray-800">2025 Season</h3>
+                <p class="text-gray-600">Review last season&apos;s prize money standings and payouts.</p>
             </div>
 
-        </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dashboard Card: 2025 Money List -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 flex flex-col">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center relative overflow-hidden group">
+                        <img src="https://placehold.co/600x400/10b981/FFFFFF?text=Money+List+2025" alt="2025 Money List" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">2025 Money List</h3>
+                        <p class="text-gray-600 mb-4 flex-1">See how the 2025 season finished with total winnings, event payouts, and final rankings.</p>
+                        <a href="MoneyList2025.html" class="inline-block w-full text-center bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                            View Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer Section -->
